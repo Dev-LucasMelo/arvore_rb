@@ -14,7 +14,7 @@ typedef struct no {
 typedef no * arvore;
 
 void inicializar(arvore *raiz); //OK
-void adicionar (int valor, arvore *raiz); //dev
+void adicionar (int valor, arvore *raiz); //OK
 void remover (int valor, arvore *raiz);
 
 
@@ -32,10 +32,12 @@ void imprimir_elemento(arvore raiz); //OK
 void imprimir(arvore raiz); //OK
 
 enum cor cor(arvore elemento); //OK
-void ajustar(arvore *raiz, arvore elemento); //dev //ajusta arvore resultante na operação de inserir
+void ajustar(arvore *raiz, arvore elemento); //OK //ajusta arvore resultante na operaÃ§Ã£o de inserir
 void reajustar(arvore *raiz, arvore elemento);
 void rotacao_simples_direita(arvore *raiz, arvore pivo); //OK
 void rotacao_simples_esquerda(arvore *raiz, arvore pivo); //OK
+void rotacao_dupla_direita(arvore *raiz, arvore elemento); //OK
+void rotacao_dupla_esquerda(arvore *raiz, arvore elemento); //OK
 
 int eh_raiz(arvore elemento); //OK
 int eh_filho_esquerdo(arvore elemento); //OK

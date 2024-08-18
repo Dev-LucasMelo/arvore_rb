@@ -48,13 +48,23 @@ void ajustar(arvore *raiz, arvore elemento){
 		}
 
 		//caso 3a: rota��o dupla direita
-		//if(1) {
-				//continue;
-		//}
+		if(!eh_filho_esquerdo(elemento) && eh_filho_esquerdo(elemento->pai)) {
+            rotacao_dupla_direita(raiz,elemento);
+
+            //atualizacao de cores
+            elemento->cor = PRETO;
+            elemento->dir->cor = VERMELHO;
+            continue;
+		}
 		//caso 3b: rota��o dupla esquerda
-		//if(1) {
-				//continue;
-		//}
+		if(eh_filho_esquerdo(elemento) && !eh_filho_esquerdo(elemento->pai)) {
+            rotacao_dupla_esquerda(raiz,elemento);
+
+            //atualizacao de cores
+            elemento->cor = PRETO;
+            elemento->esq->cor = VERMELHO;
+            continue;
+		}
 
 	}
 
@@ -169,6 +179,18 @@ void rotacao_simples_esquerda(arvore *raiz, arvore pivo){
             u->pai->dir = u;
         }
     }
+};
+
+void rotacao_dupla_direita(arvore *raiz, arvore elemento){
+    rotacao_simples_esquerda(raiz,elemento->pai);
+    // passa novamente elemento->pai como pivo, pois a primeira rotacao atualiza os ponteiros
+    rotacao_simples_direita(raiz,elemento->pai);
+};
+
+void rotacao_dupla_esquerda(arvore *raiz, arvore elemento){
+    printf("\n\n modulo rotacao dupla esquerda no elemento %d",elemento->dado);
+    rotacao_simples_direita(raiz,elemento->pai);
+    rotacao_simples_esquerda(raiz,elemento->pai);
 };
 
 // funcoes auxiliares
