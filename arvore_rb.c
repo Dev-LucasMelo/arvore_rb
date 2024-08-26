@@ -251,32 +251,17 @@ void in_order(arvore raiz) {
 }
 
 void imprimir_elemento(arvore raiz) {
-
-    if(raiz->pai != NULL){
-        switch(raiz->cor){
-            case PRETO:
-                printf("\nNO: %d | pai: %d | cor: preto",raiz->dado,raiz->pai->dado);
+	switch(raiz->cor){
+		case PRETO:
+			printf("\x1b[30m[%d]\x1b[0m", raiz->dado);
 			break;
-            case VERMELHO:
-                printf("\nNO: %d | pai: %d | cor: vermelho",raiz->dado,raiz->pai->dado);
-            break;
-            case DUPLO_PRETO:
-                printf("\nNO: %d | pai: %d | cor: duplo_preto",raiz->dado,raiz->pai->dado);
+		case VERMELHO:
+			printf("\x1b[31m[%d]\x1b[0m", raiz->dado);
 			break;
-        }
-    }else{
-        switch(raiz->cor){
-            case PRETO:
-                printf("\nNO: %d | pai: %d | cor: preto",raiz->dado,-1);
+		case DUPLO_PRETO:
+			printf("\x1b[32m[%d]\x1b[0m", raiz->dado);
 			break;
-            case VERMELHO:
-                printf("\nNO: %d | pai: %d | cor: vermelho",raiz->dado,-1);
-            break;
-            case DUPLO_PRETO:
-                printf("\nNO: %d | pai: %d | cor: duplo_preto",raiz->dado,-1);
-			break;
-        }
-    }
+	}
 }
 
 void imprimir(arvore raiz) {
